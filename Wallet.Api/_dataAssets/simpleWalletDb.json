@@ -1,0 +1,64 @@
+[
+  {
+    "Name": "Steve Rogers",
+    "Wallets": [
+      {
+        "Name": "America's Wallet",
+        "Cards": [
+          {
+            "Name": "Chase Freedom",
+            "Balance": 100,
+            "Limit": 1000,
+            "Type": "Visa",
+            "Expiree": "7/1/2021"
+          },
+          {
+            "Name": "Capital Platinum",
+            "Balance": 100,
+            "Limit": 1000,
+            "Type": "MasterCard",
+            "Expiree": "7/1/2021"
+          },
+          {
+            "Name": "The Discover Card",
+            "Balance": 100,
+            "Limit": 1000,
+            "Type": "Discover",
+            "Expiree": "7/1/2021"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Buckey Barns",
+    "Wallets": [
+      {
+        "Name": "America's Wallet",
+        "Cards": [
+          {
+            "Name": "Chase Freedom",
+            "Balance": 100,
+            "Limit": 1000,
+            "Type": "Visa",
+            "Expiree": "7/1/2021"
+          },
+          {
+            "Name": "Capital Platinum",
+            "Balance": 100,
+            "Limit": 1000,
+            "Type": "Master Card",
+            "Expiree": "7/1/2021"
+          },
+          {
+            "Name": "The Discover Card",
+            "Balance": 100,
+            "Limit": 1000,
+            "Type": "CArd",
+            "Expiree": "7/1/2021"
+          }
+        ]
+      }
+    ]
+  }
+]
