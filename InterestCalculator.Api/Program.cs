@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace Wallet.Api
+namespace InterestCalculator.Api
 {
     public class Program
     {
@@ -19,7 +19,7 @@ namespace Wallet.Api
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                   .UseUrls("https://*:4202")
-                   .UseStartup<Startup>();
+                .UseUrls("https://*:4201")
+                .UseStartup<Startup>();
     }
 }
