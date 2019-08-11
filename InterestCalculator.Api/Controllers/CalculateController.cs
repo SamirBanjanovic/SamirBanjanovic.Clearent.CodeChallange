@@ -11,6 +11,8 @@ namespace InterestCalculator.Api.Controllers
     [ApiController]
     public class CalculateController : ControllerBase
     {
+        //TODO: Inject calculator to compute interest `_calc.ComputeInterest(balance, cardType) => (%_intrest, $_intrest)` 
+
         // GET api/values
         [HttpGet]
         public async Task<IActionResult> Get(CardBalance cardBalance)
@@ -19,11 +21,13 @@ namespace InterestCalculator.Api.Controllers
             {
                 return BadRequest();
             }
-
+           
             if(cardBalance.Balance < 0)
             {
-                return 
+                return null;
             }
+
+            return Ok(new BalanceInterest());
         }
 
     }

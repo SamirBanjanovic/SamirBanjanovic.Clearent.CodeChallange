@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wallet", "Wallet\Wallet.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wallet.Api", "Wallet.Api\Wallet.Api.csproj", "{29D72DEB-8EBE-4979-B04E-38E05295FFA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wallet.Console", "Wallet.Console\Wallet.Console.csproj", "{90086F95-7312-414B-A93E-FE247FE9F844}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wallet.Console", "Wallet.Console\Wallet.Console.csproj", "{90086F95-7312-414B-A93E-FE247FE9F844}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterestCalculator.Api", "InterestCalculator.Api\InterestCalculator.Api.csproj", "{C8EBA958-D44D-47B8-B98A-487168EE8AF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InterestCalculator.Api", "InterestCalculator.Api\InterestCalculator.Api.csproj", "{C8EBA958-D44D-47B8-B98A-487168EE8AF3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
