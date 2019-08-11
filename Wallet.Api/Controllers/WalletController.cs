@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Wallet.Api.Data;
 using Wallet.Api.Models;
 
 namespace Wallet.Api.Controllers
@@ -11,18 +14,25 @@ namespace Wallet.Api.Controllers
     [ApiController]
     public class WalletController : ControllerBase
     {
-        // GET api/values
-        [HttpGet("{owner}")]
-        public async Task<IActionResult> GetAllWallets(string owner)
+        private readonly IAccessService _accessService;
+
+        public WalletController(IAccessService accessService)
         {
-            return null;
+            _accessService = accessService;
         }
 
-        // GET api/values/5
-        [HttpGet("{owner}/{walletName}")]
-        public async Task<IActionResult> GetWallet(string owner, string walletName)
+        // GET api/wallet/{owner}
+        [HttpGet("{owner}")]
+        public async Task<IActionResult> GetAllWallets([BindRequired] string owner)
         {
-            return "value";
+            if(ModelState.IsValid)
+            {
+                return Ok(await _accessService.GetWallets(owner).ConfigureAwait(false));
+            }
+
+            return BadRequest();
         }
+
+                                       
     }
 }

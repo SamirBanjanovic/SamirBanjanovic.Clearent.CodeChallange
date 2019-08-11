@@ -19,6 +19,7 @@ namespace Wallet.Api
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                   .UseUrls("https://*:4200")
                    .UseStartup<Startup>();
     }
 }

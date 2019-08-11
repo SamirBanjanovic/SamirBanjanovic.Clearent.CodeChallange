@@ -5,12 +5,10 @@ using System.Threading.Tasks;
 
 namespace Wallet.Api.Models
 {
-    public class Wallet
+    public class Owner
     {
-        public string Owner { get; set; }
-
         public string Name { get; set; }
 
-        public IEnumerable<Card> Cards { get; set; }
+        public IEnumerable<CardWallet> Wallets { get; set; }
     }
 }
