@@ -12,35 +12,17 @@ namespace Wallet.Api.Controllers
     public class WalletController : ControllerBase
     {
         // GET api/values
-        [HttpGet("{user}")]
-        public async Task<IActionResult> GetWallet(Guid user)
+        [HttpGet("{owner}")]
+        public async Task<IActionResult> GetAllWallets(string owner)
         {
             return null;
         }
 
         // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        [HttpGet("{owner}/{walletName}")]
+        public async Task<IActionResult> GetWallet(string owner, string walletName)
         {
             return "value";
-        }
-
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }
