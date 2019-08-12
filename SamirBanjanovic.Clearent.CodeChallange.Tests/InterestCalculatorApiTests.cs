@@ -11,13 +11,14 @@ namespace SamirBanjanovic.Clearent.CodeChallange.Tests
             MC gets 5% interest
             Discover gets 1% interest
         */
+        private static readonly IInterestCalculator _interestCalculator = new SimpleInterestCalculator();
 
         [TestMethod]
         public void TestSimpleInterestCalc()
         {
-            IInterestCalculator interestCalc = new SimpleInterestCalculator();
+            var interest = _interestCalculator.ComputeInterest(100, 0.10m);
 
-
+            Assert.AreEqual(10, interest);
         } 
     }
 }
