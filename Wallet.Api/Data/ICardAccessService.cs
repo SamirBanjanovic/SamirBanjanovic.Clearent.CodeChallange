@@ -6,7 +6,7 @@ using Wallet.Api.Models;
 
 namespace Wallet.Api.Data
 {
-    public interface IAccessService
+    public interface ICardAccessService
     {
         Task<IEnumerable<Owner>> GetWallets();
 
