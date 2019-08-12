@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using InterestCalculator.Api.Classes;
 using InterestCalculator.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,8 +13,16 @@ namespace InterestCalculator.Api.Controllers
     public class CalculateController : ControllerBase
     {
         //TODO: Inject calculator to compute interest `_calc.ComputeInterest(balance, cardType) => (%_intrest, $_intrest)` 
+        //TODO: lookup interest rate based on `CardType`
 
-        // GET api/values
+        private readonly IInterestCalculator _interestCalculator;
+
+        public CalculateController(IInterestCalculator interestCalculator)
+        {
+            _interestCalculator = interestCalculator;
+        }
+        
+        
         [HttpGet]
         public async Task<IActionResult> Get(CardBalance cardBalance)
         {
@@ -26,7 +35,7 @@ namespace InterestCalculator.Api.Controllers
             {
                 return null;
             }
-
+            
             return Ok(new BalanceInterest());
         }
 
