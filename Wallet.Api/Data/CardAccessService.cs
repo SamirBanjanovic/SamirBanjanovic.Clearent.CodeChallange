@@ -9,13 +9,13 @@ using Wallet.Api.Models;
 
 namespace Wallet.Api.Data
 {
-    public class AccessService
-        : IAccessService
+    public class CardAccessService
+        : ICardAccessService
     {
         private readonly IDictionary<string, Owner> _ownerWallets;
 
 
-        public AccessService(IConfiguration configuration)
+        public CardAccessService(IConfiguration configuration)
         {
             _ownerWallets = JsonConvert
                                 .DeserializeObject<IEnumerable<Owner>>(File.ReadAllText(configuration["Application:WalletDbPath"]))

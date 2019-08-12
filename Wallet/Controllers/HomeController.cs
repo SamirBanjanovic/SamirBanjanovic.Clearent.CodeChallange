@@ -4,14 +4,27 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Wallet.ApiAccess;
 using Wallet.Models;
 
 namespace Wallet.Controllers
 {
     public class HomeController : Controller
     {
+        private WalletApi _walletApi;
+        private InterestCalculatorApi _interestApi;
+
+        public HomeController(WalletApi walletApi,InterestCalculatorApi interestApi)
+        {
+            _walletApi = walletApi;
+            _interestApi = interestApi;
+        }
+
         public IActionResult Index()
         {
+
+
+
             return View();
         }
 

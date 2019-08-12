@@ -14,9 +14,9 @@ namespace Wallet.Api.Controllers
     [ApiController]
     public class WalletController : ControllerBase
     {
-        private readonly IAccessService _accessService;
+        private readonly ICardAccessService _accessService;
 
-        public WalletController(IAccessService accessService)
+        public WalletController(ICardAccessService accessService)
         {
             _accessService = accessService;
         }

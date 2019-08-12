@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\InterestCalculator.Api\InterestCalculator.Api.csproj" />
     <ProjectReference Include="..\Wallet.Api\Wallet.Api.csproj" />
     <ProjectReference Include="..\Wallet\Wallet.csproj" />
   </ItemGroup>

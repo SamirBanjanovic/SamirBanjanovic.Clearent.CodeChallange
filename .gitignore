@@ -51,6 +51,9 @@ dlldata.c
 # Benchmark Results
 BenchmarkDotNet.Artifacts/
 
+# 3rd party plugins
+*.tmpl
+
 # .NET Core
 project.lock.json
 project.fragment.lock.json
@@ -338,3 +341,4 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/.vscode/solution-explorer

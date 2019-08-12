@@ -16,7 +16,7 @@ namespace SamirBanjanovic.Clearent.CodeChallange.Tests
         [TestMethod]
         public async Task DataAccesTest()
         {
-            IAccessService accessService = new AccessService(_configuration);
+            ICardAccessService accessService = new CardAccessService(_configuration);
             var ownerWallets = await accessService.GetWallets();
 
             foreach(var ow in ownerWallets)
