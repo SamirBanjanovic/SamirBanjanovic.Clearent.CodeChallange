@@ -5,16 +5,14 @@ using System.Threading.Tasks;
 using InterestCalculator.Api.Classes;
 using InterestCalculator.Api.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace InterestCalculator.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class CalculateController : ControllerBase
-    {
-        //TODO: Inject calculator to compute interest `_calc.ComputeInterest(balance, cardType) => (%_intrest, $_intrest)` 
-        //TODO: lookup interest rate based on `CardType`
-
+    {                
         private readonly IInterestCalculator _interestCalculator;
 
         public CalculateController(IInterestCalculator interestCalculator)
@@ -23,21 +21,29 @@ namespace InterestCalculator.Api.Controllers
         }
         
         
-        [HttpGet]
-        public async Task<IActionResult> Get(CardBalance cardBalance)
-        {
+        // api/calculate/{balance}/{interestRate}
+        [HttpGet("{balance}/{interestRate}")]
+        public IActionResult Get([BindRequired]decimal balance, [BindRequired]decimal interestRate)
+        {            
             if(!ModelState.IsValid)
             {
                 return BadRequest();
             }
-           
-            if(cardBalance.Balance < 0)
-            {
-                return null;
-            }
-            
-            return Ok(new BalanceInterest());
+
+                        
+            return Ok(GenerateBalanceInterest(balance, interestRate));
         }
+
+        private BalanceInterest GenerateBalanceInterest(decimal balance, decimal interestRate)
+            => new BalanceInterest
+            {
+                Balance = balance,
+                InterestPercent = interestRate,
+                Interest = balance < 0 ?
+                                    0 :
+                                    _interestCalculator.ComputeInterest(balance, interestRate)
+            };
+        
 
     }
 }

@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace InterestCalculator.Api.Models
+namespace Wallet.ApiAccess.InterestCalculatorApiModels
 {
     public class CardBalance
     {
@@ -9,6 +9,6 @@ namespace InterestCalculator.Api.Models
         public decimal Balance { get; set; }
 
         [Required]
-        public string CardType { get; set; }
+        public decimal InterestRate { get; set; }
     }
 }
