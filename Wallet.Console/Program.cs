@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Wallet.Console
+namespace Wallet
 {
     class Program
     {

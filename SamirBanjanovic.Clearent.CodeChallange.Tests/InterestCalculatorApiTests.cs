@@ -16,9 +16,13 @@ namespace SamirBanjanovic.Clearent.CodeChallange.Tests
         [TestMethod]
         public void TestSimpleInterestCalc()
         {
-            var interest = _interestCalculator.ComputeInterest(100, 0.10m);
+            var interest_10 = _interestCalculator.ComputeInterest(100, 0.10m);
+            var interest_05= _interestCalculator.ComputeInterest(100, 0.05m);
+            var interest_01 = _interestCalculator.ComputeInterest(100, 0.01m);
 
-            Assert.AreEqual(10, interest);
+            Assert.AreEqual(10, interest_10);
+            Assert.AreEqual(5, interest_05);
+            Assert.AreEqual(1, interest_01);
         } 
     }
 }

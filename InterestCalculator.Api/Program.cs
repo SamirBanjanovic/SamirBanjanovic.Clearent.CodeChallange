@@ -19,7 +19,7 @@ namespace InterestCalculator.Api
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseUrls("https://*:4201")
+                .UseUrls("https://*:4202")
                 .UseStartup<Startup>();
     }
 }
