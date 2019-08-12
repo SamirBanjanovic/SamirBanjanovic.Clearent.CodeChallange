@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Wallet.ApiAccess;
+using Wallet.ApiAccess.WalletApiModels;
 using Wallet.Models;
 
 namespace Wallet.Controllers
@@ -20,12 +21,12 @@ namespace Wallet.Controllers
             _interestApi = interestApi;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            IEnumerable<Owner> wallets = await _walletApi.GetAll();
 
 
-
-            return View();
+            return View(wallets);
         }
 
         public IActionResult Privacy()
