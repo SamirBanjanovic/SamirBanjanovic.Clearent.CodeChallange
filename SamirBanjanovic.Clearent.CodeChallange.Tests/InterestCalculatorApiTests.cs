@@ -46,6 +46,17 @@ namespace SamirBanjanovic.Clearent.CodeChallange.Tests
             Assert.AreEqual(1, interest_01);  // Discover
         }
 
+        private (string CardName, string CardType, decimal Interest, decimal ExpectedInterest) ComputeCardInterest(Card card)
+        {
+            // assume we live in a perfect world
+            // where everything we ask for exsits
+            var interestRate = _interestRates[card.Type];
+            var interest = _interestCalculator.ComputeInterest(card.Balance, interestRate);
+            var expectedInterest = (card.Balance * interestRate);
+
+            return (CardName: card.Name, CardType: card.Type, Interest: interest, ExpectedInterest: expectedInterest);
+        }
+
         // TODO: Add tests verifying all bullet points in challange and returning interest rate
         /*
 
@@ -58,25 +69,24 @@ namespace SamirBanjanovic.Clearent.CodeChallange.Tests
         [TestMethod]
         public void TestSteveRogersInterest()
         {
-            var totalInterst = _ownerWallets["Steve Rogers"]
-                                .Wallets
-                                .First() //we know they only have one wallet so we'll do the leap of faith access
-                                .Cards
-                                .Select(card =>
-                                {
-                                    // assume we live in a perfect world
-                                    // where everything we ask for exsits
-                                    var interestRate = _interestRates[card.Type];
-                                    var interest = _interestCalculator.ComputeInterest(card.Balance, interestRate);
+            var personInterst = _ownerWallets["Steve Rogers"]
+                                    .Wallets
+                                    .First() //we know they only have one wallet so we'll do the leap of faith access
+                                    .Cards
+                                    .Select(card =>
+                                    {
+                                        // assert interest per card
+                                        var cardInterest = ComputeCardInterest(card);
 
-                                    Assert.AreEqual((card.Balance * interestRate), interest);
+                                        Assert.AreEqual(cardInterest.ExpectedInterest, cardInterest.Interest);
 
-                                    return interest;
-                                })
-                                .Sum(); // execute
-            
-            // did math in head and assume i did it right -- so here we check if computer is right
-            Assert.AreEqual(16, totalInterst);
+                                        return cardInterest;
+                                    })
+                                    .Select(x => x.Interest)
+                                    .Sum();
+
+            // check if total is correct
+            Assert.AreEqual(16, personInterst);
 
         }
 
@@ -91,25 +101,7 @@ namespace SamirBanjanovic.Clearent.CodeChallange.Tests
         */
         [TestMethod]
         public void TestBuckeyBarnsInterest()
-        {
-            var totalInterst = _ownerWallets["Buckey Barns"]
-                                    .Wallets
-                                    .SelectMany(w => w.Cards) // flatten the array so we can do it all in one go                                          
-                                    .Select(card =>
-                                    {
-                                        // assume we live in a perfect world
-                                        // where everything we ask for exsits
-                                        var interestRate = _interestRates[card.Type];
-                                        var interest = _interestCalculator.ComputeInterest(card.Balance, interestRate);
-
-                                        Assert.AreEqual((card.Balance * interestRate), interest);
-
-                                        return interest;
-                                    })
-                                    .Sum(); // execute
-
-
-        }
+            => TestAdHocWalletPersonInterest(ownerName: "Buckey Barns", expectedTotalPersonInterest: 16);
 
 
         /*
@@ -122,7 +114,37 @@ namespace SamirBanjanovic.Clearent.CodeChallange.Tests
         [TestMethod]
         public void TestBruceAndNatasha()
         {
+            //test bruce banner interest
+            TestAdHocWalletPersonInterest(ownerName: "Bruce Banner", expectedTotalPersonInterest: 15);
+            TestAdHocWalletPersonInterest(ownerName: "Natasha Romanova", expectedTotalPersonInterest: 15);
+        }
 
+        // rules request is repeated so extract this logic into own test method that's called by others
+        private void TestAdHocWalletPersonInterest(string ownerName, decimal expectedTotalPersonInterest)
+        {
+            var personInterest = _ownerWallets[ownerName]
+                                    .Wallets
+                                    .Select(wallet =>
+                                    {
+
+                                        var cardInterests = wallet
+                                                            .Cards
+                                                            // we don't have to check interest per card
+                                                            // skip assert
+                                                            .Select(card => ComputeCardInterest(card))
+                                                            .ToList();
+
+                                        var walletInterest = (WalletName: wallet.Name, WalletInterest: cardInterests.Select(x => x.Interest).Sum(), WalletExpectedInterest: cardInterests.Select(x => x.ExpectedInterest).Sum());
+
+                                        Assert.AreEqual(walletInterest.WalletExpectedInterest, walletInterest.WalletInterest);
+
+                                        return walletInterest;
+                                    })
+                                    .Select(x => x.WalletInterest)
+                                    .Sum(); // execute
+
+
+            Assert.AreEqual(expectedTotalPersonInterest, personInterest);
         }
 
     }
