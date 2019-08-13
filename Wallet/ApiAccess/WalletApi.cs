@@ -24,7 +24,7 @@ namespace Wallet.ApiAccess
         {
             if (!_memoryCache.TryGetValue(CacheKeys.OwnerWalletsKey, out IEnumerable<Owner> ownerWallets))
             {
-                ownerWallets = await _apiUri.GetJsonAsync<IEnumerable<Owner>>();
+                ownerWallets = await _apiUri.GetJsonAsync<IEnumerable<Owner>>().ConfigureAwait(false);
 
                 _memoryCache.Set(CacheKeys.OwnerWalletsKey, ownerWallets);
             }
@@ -35,7 +35,7 @@ namespace Wallet.ApiAccess
         // skip using API since we'll hit the
         // cache for better performance
         public async Task<Owner> Get(string ownerName)
-            => (await GetAll())
+            => (await GetAll().ConfigureAwait(false))
                     .FirstOrDefault(owner => string.Compare(owner.Name, ownerName, true) == 0);
 
 
