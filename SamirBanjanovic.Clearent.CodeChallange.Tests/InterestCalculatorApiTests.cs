@@ -24,5 +24,7 @@ namespace SamirBanjanovic.Clearent.CodeChallange.Tests
             Assert.AreEqual(5, interest_05);
             Assert.AreEqual(1, interest_01);
         } 
+        
+        // TODO: Add tests verifying all bullet points in challange and returning interest rate
     }
 }
