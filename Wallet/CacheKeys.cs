@@ -7,6 +7,6 @@ namespace Wallet
 {
     internal static class CacheKeys
     {
-        public static string OwnerWalletsKey = "Key_01:Owner:Wallets:All"
+        public static string OwnerWalletsKey = "Key_01:Owner:Wallets:All";
     }
 }
