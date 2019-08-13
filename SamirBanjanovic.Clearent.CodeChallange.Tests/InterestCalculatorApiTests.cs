@@ -57,7 +57,7 @@ namespace SamirBanjanovic.Clearent.CodeChallange.Tests
             return (CardName: card.Name, CardType: card.Type, Interest: interest, ExpectedInterest: expectedInterest);
         }
 
-        // TODO: Add tests verifying all bullet points in challange and returning interest rate
+
         /*
 
             1 person has 1 wallet and 3 cards (1 Visa, 1 MC 1 Discover) – Each Card has a balance of $100 –
@@ -114,8 +114,10 @@ namespace SamirBanjanovic.Clearent.CodeChallange.Tests
         [TestMethod]
         public void TestBruceAndNatasha()
         {
-            //test bruce banner interest
+            //test bruce interest
             TestAdHocWalletPersonInterest(ownerName: "Bruce Banner", expectedTotalPersonInterest: 15);
+
+            //test natasha interest
             TestAdHocWalletPersonInterest(ownerName: "Natasha Romanova", expectedTotalPersonInterest: 15);
         }
 
@@ -136,6 +138,7 @@ namespace SamirBanjanovic.Clearent.CodeChallange.Tests
 
                                         var walletInterest = (WalletName: wallet.Name, WalletInterest: cardInterests.Select(x => x.Interest).Sum(), WalletExpectedInterest: cardInterests.Select(x => x.ExpectedInterest).Sum());
 
+                                        // assert interest per wallet
                                         Assert.AreEqual(walletInterest.WalletExpectedInterest, walletInterest.WalletInterest);
 
                                         return walletInterest;
@@ -143,7 +146,7 @@ namespace SamirBanjanovic.Clearent.CodeChallange.Tests
                                     .Select(x => x.WalletInterest)
                                     .Sum(); // execute
 
-
+            // assert total interest
             Assert.AreEqual(expectedTotalPersonInterest, personInterest);
         }
 
