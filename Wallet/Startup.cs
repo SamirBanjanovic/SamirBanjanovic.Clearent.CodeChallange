@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
+using Wallet.ApiAccess;
 
 namespace Wallet
 {
@@ -26,13 +27,16 @@ namespace Wallet
         public void ConfigureServices(IServiceCollection services)
         {
 
-
+            services.AddMemoryCache();
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+            services.AddScoped<WalletApi>()
+                    .AddScoped<InterestCalculatorApi>();
 
             services.AddSingleton<IDictionary<string, decimal>>(x =>
             {

@@ -39,9 +39,7 @@ namespace InterestCalculator.Api.Controllers
             {
                 Balance = balance,
                 InterestPercent = interestRate,
-                Interest = balance < 0 ?
-                                    0 :
-                                    _interestCalculator.ComputeInterest(balance, interestRate)
+                Interest = balance < 0 ? 0 : _interestCalculator.ComputeInterest(balance, interestRate) // computes interest base don calc injected
             };
         
 
