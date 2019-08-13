@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
+using Wallet.ApiAccess;
 
 namespace Wallet
 {
@@ -33,6 +34,9 @@ namespace Wallet
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+            services.AddScoped<WalletApi>()
+                    .AddScoped<InterestCalculatorApi>();
 
             services.AddSingleton<IDictionary<string, decimal>>(x =>
             {

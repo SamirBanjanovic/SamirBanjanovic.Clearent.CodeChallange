@@ -6,19 +6,21 @@ using Flurl.Http;
 using Flurl;
 using Wallet.ApiAccess.WalletApiModels;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Configuration;
 
 namespace Wallet.ApiAccess
 {
     public class WalletApi
     {
-        private readonly string _apiUri;
+        private string _apiUri;
         private readonly IMemoryCache _memoryCache;
 
-        public WalletApi(string apiUri, IMemoryCache memoryCache)
-        {
-            _apiUri = apiUri;
+        public WalletApi(IConfiguration configuration, IMemoryCache memoryCache)
+        {            
             _memoryCache = memoryCache;
+            _apiUri = configuration["Api:WalletApi"];
         }
+
 
         public async Task<IEnumerable<Owner>> GetAll()
         {
