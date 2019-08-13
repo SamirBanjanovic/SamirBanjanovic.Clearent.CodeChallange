@@ -13,7 +13,8 @@ using Wallet.Models;
 
 namespace Wallet.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController 
+        : Controller
     {
         private readonly WalletApi _walletApi;
         private readonly InterestCalculatorApi _interestApi;
@@ -29,9 +30,8 @@ namespace Wallet.Controllers
         public async Task<IActionResult> Index()
         {
             IEnumerable<Owner> ownersWallets = await _walletApi.GetAll();
-
             // set interest rate and values for all cards
-
+            await SetInterestValues(ownersWallets);
 
             return View(ownersWallets);
         }
@@ -58,7 +58,10 @@ namespace Wallet.Controllers
                     if (_interestRates.TryGetValue(card.Type, out decimal interestRate))
                     {
                         // compute interest from API
-                        var interest = await _interestApi.GetInterest(new CardBalance() { Balance = card.Balance, InterestRate = interestRate });
+                        var interestDetails = await _interestApi.GetInterest(new CardBalance() { Balance = card.Balance, InterestRate = interestRate });
+                        // mutate instance based on computed interest
+                        card.Interest = interestDetails.Interest;
+                        card.InterestRate = interestDetails.InterestPercent;
                     }
                 }
             }
