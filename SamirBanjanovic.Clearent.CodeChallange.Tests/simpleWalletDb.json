@@ -1,0 +1,120 @@
+[
+  // bullet - 1
+  {
+    "Name": "Steve Rogers",
+    "Wallets": [
+      {
+        "Name": "Fort Knox",
+        "Cards": [
+          {
+            "Name": "Chase Freedom",
+            "Balance": 100,
+            "Limit": 1000,
+            "Type": "Visa",
+            "Expiree": "1/1/2020"
+          },
+          {
+            "Name": "CapitalOne Platinum",
+            "Balance": 100,
+            "Limit": 1000,
+            "Type": "MasterCard",
+            "Expiree": "5/1/2021"
+          },
+          {
+            "Name": "The Discover Card",
+            "Balance": 100,
+            "Limit": 1000,
+            "Type": "Discover",
+            "Expiree": "10/1/2022"
+          }
+        ]
+      }
+    ]
+  },
+  // bullet - 2
+  {
+    "Name": "Buckey Barns",
+    "Wallets": [
+      {
+        "Name": "Freedom",
+        "Cards": [
+          {
+            "Name": "Chase Freedom",
+            "Balance": 100,
+            "Limit": 1000,
+            "Type": "Visa",
+            "Expiree": "3/1/2020"
+          },
+          {
+            "Name": "The Discover Card",
+            "Balance": 100,
+            "Limit": 1000,
+            "Type": "Discover",
+            "Expiree": "6/1/2021"
+          }
+        ]
+      },
+      {
+        "Name": "Red Dawn",
+        "Cards": [
+          {
+            "Name": "CapitalOne Platinum",
+            "Balance": 100,
+            "Limit": 1000,
+            "Type": "MasterCard",
+            "Expiree": "7/1/2021"
+          }
+        ]
+      }
+    ]
+  },
+  // bullet - 3
+  {
+    "Name": "Bruce Banner",
+    "Wallets": [
+      {
+        "Name": "Smash",
+        "Cards": [
+          {
+            "Name": "Chase Freedom",
+            "Balance": 100,
+            "Limit": 1000,
+            "Type": "Visa",
+            "Expiree": "3/1/2020"
+          },
+          {
+            "Name": "CapitalOne Platinum",
+            "Balance": 100,
+            "Limit": 1000,
+            "Type": "MasterCard",
+            "Expiree": "7/1/2021"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Natasha Romanova",
+    "Wallets": [
+      {
+        "Name": "Shadow",
+        "Cards": [
+          {
+            "Name": "Chase Freedom",
+            "Balance": 100,
+            "Limit": 1000,
+            "Type": "Visa",
+            "Expiree": "3/1/2020"
+          },
+          {
+            "Name": "CapitalOne Platinum",
+            "Balance": 100,
+            "Limit": 1000,
+            "Type": "MasterCard",
+            "Expiree": "7/1/2021"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -19,7 +19,8 @@ namespace Wallet.ApiAccess
 
         public async Task<BalanceInterest> GetInterest(CardBalance cardBalance)
             => await _apiUri.AppendPathSegments(cardBalance.Balance, cardBalance.InterestRate)
-                            .GetJsonAsync<BalanceInterest>();
+                            .GetJsonAsync<BalanceInterest>()
+                            .ConfigureAwait(false);
 
         
     }
