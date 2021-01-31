@@ -3,16 +3,16 @@
    // Use hover for the description of the existing attributes
    // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
    "version": "0.2.0",
-   "configurations": [
+   "configurations": [    
         {
             "name": ".NET Core Launch (web)",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/InterestCalculator.Api/bin/Debug/netcoreapp2.2/InterestCalculator.Api.dll",
+            "program": "${workspaceFolder}/Wallet.Api/bin/Debug/netcoreapp2.2/Wallet.Api.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/InterestCalculator.Api",
+            "cwd": "${workspaceFolder}/Wallet.Api",
             "stopAtEntry": false,
             // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
             "serverReadyAction": {
